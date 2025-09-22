@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">IMC - PARCIAL 1</string>
-    <string name="welcome_Message" >Hola mundo</string>
+    <string name="app_name">Calculadora IMC</string>
+    <string name="subtitulo">Salud y rendimiento</string>
+    <string name="cd_header">Ilustración de salud/fitness</string>
 </resources>
