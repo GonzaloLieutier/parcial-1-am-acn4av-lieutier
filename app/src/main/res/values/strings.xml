@@ -2,4 +2,9 @@
     <string name="app_name">Calculadora IMC</string>
     <string name="subtitulo">Salud y rendimiento</string>
     <string name="cd_header">Ilustración de salud/fitness</string>
+    <string name="peso_label">Peso (kg)</string>
+    <string name="altura_label">Altura (cm)</string>
+    <string name="btn_calcular">Calcular IMC</string>
+    <string name="hint_peso">Ej: 67.5</string>
+    <string name="hint_altura">Ej: 160</string>
 </resources>
