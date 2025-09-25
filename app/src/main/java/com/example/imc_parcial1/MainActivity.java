@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText etPeso, etAltura;
     private TextView tvResultado, tvImcGigante;
-    private LinearLayout resultContainer;
+    private LinearLayout resultContainer, dynamicContainer;
     private Button btnCalcular;
 
     @Override
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
         tvImcGigante = findViewById(R.id.tvImcGigante);
         resultContainer = findViewById(R.id.resultContainer);
+        dynamicContainer = findViewById(R.id.dynamicContainer);
         btnCalcular = findViewById(R.id.btnCalcular);
 
         btnCalcular.setOnClickListener(v -> calcularIMC());
@@ -54,19 +55,19 @@ public class MainActivity extends AppCompatActivity {
 
 
             String categoria;
-            boolean esNormal;
+            int colorResId;
             if (imc < 18.5f) {
                 categoria = "Bajo peso";
-                esNormal = false;
+                colorResId = R.color.imc_underweight;
             } else if (imc < 25f) {
                 categoria = "Peso normal";
-                esNormal = true;
+                colorResId = R.color.imc_good;
             } else if (imc < 30f) {
                 categoria = "Sobrepeso";
-                esNormal = false;
+                colorResId = R.color.imc_overweight;
             } else {
                 categoria = "Obesidad";
-                esNormal = false;
+                colorResId = R.color.imc_bad;
             }
 
 
@@ -78,19 +79,38 @@ public class MainActivity extends AppCompatActivity {
             tvResultado.setText(categoria);
 
 
-            @ColorInt int color = ContextCompat.getColor(this,
-                    esNormal ? R.color.imc_good : R.color.imc_bad);
+            @ColorInt int color = ContextCompat.getColor(this, colorResId);
             Drawable bg = resultContainer.getBackground();
             if (bg instanceof GradientDrawable) {
                 ((GradientDrawable) bg.mutate()).setColor(color);
             } else {
                 resultContainer.setBackgroundColor(color);
             }
-            
 
-
+            TextView tipView;
+            if (dynamicContainer.getChildCount() == 0 || !(dynamicContainer.getChildAt(0) instanceof TextView)) {
+                tipView = new TextView(this);
+                tipView.setTextSize(16f);
+                tipView.setPadding(0, dp(8), 0, 0);
+                dynamicContainer.removeAllViews();
+                dynamicContainer.addView(tipView);
+            } else {
+                tipView = (TextView) dynamicContainer.getChildAt(0);
+            }
+            tipView.setText(getTip(categoria));
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Formato numérico inválido", Toast.LENGTH_SHORT).show();
         }
     }
+    private String getTip(String categoria) {
+        if (categoria == null) return "";
+        if (categoria.equals(getString(R.string.cat_bajo_peso)))  return getString(R.string.tip_bajo_peso);
+        if (categoria.equals(getString(R.string.cat_normal))) return getString(R.string.tip_normal);
+        if (categoria.equals(getString(R.string.cat_sobrepeso)))   return getString(R.string.tip_sobrepeso);
+        if (categoria.equals(getString(R.string.cat_obesidad)))    return getString(R.string.tip_obesidad);
+        return "";
+    }
+
+    private int dp(int v) { return Math.round(v * getResources().getDisplayMetrics().density); }
 }
+

@@ -57,6 +57,7 @@
         android:minHeight="180dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
         android:padding="16dp"
         android:background="@drawable/bg_result_container"
         android:visibility="gone"
@@ -91,19 +92,28 @@
             android:text="@null"
             tools:text="Peso normal"/>
     </LinearLayout>
-
+    <LinearLayout
+        android:id="@+id/dynamicContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/resultContainer"
+        app:layout_constraintStart_toStartOf="@id/headerLinear"
+        app:layout_constraintEnd_toEndOf="@id/headerLinear"/>
 
 <!--     Formulario -->
+
     <LinearLayout
         android:id="@+id/formLinear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="180dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="@id/headerLinear"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/headerLinear"
-        app:layout_constraintTop_toBottomOf="@id/resultContainer"
+        app:layout_constraintTop_toBottomOf="@id/dynamicContainer"
         app:layout_goneMarginTop="180dp">
 
         <TextView
@@ -143,4 +153,5 @@
             android:layout_marginTop="16dp"
             android:text="@string/btn_calcular" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

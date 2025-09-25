@@ -2,9 +2,20 @@
     <string name="app_name">Calculadora IMC</string>
     <string name="subtitulo">Salud y rendimiento</string>
     <string name="cd_header">Ilustración de salud/fitness</string>
+
     <string name="peso_label">Peso (kg)</string>
-    <string name="altura_label">Altura (cm)</string>
-    <string name="btn_calcular">Calcular IMC</string>
     <string name="hint_peso">Ej: 67.5</string>
+    <string name="altura_label">Altura (cm)</string>
     <string name="hint_altura">Ej: 160</string>
+    <string name="btn_calcular">Calcular IMC</string>
+
+    <string name="cat_bajo_peso">Bajo peso</string>
+    <string name="cat_normal">Peso normal</string>
+    <string name="cat_sobrepeso">Sobrepeso</string>
+    <string name="cat_obesidad">Obesidad</string>
+
+    <string name="tip_bajo_peso">Sugerencia: aumenta la ingesta calórica y consulta con un profesional.</string>
+    <string name="tip_normal">¡Bien! Mantene 2–3 entrenamientos por semana y alimentacion equilibrada.</string>
+    <string name="tip_sobrepeso">Tip: suma caminatas diarias y controlá porciones.</string>
+    <string name="tip_obesidad">Tip: consulta con un profesional y progresa con baja intensidad.</string>
 </resources>
